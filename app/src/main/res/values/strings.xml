@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">SM</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_create_portfolio">CreatePortfolio</string>
+    <string name="title_activity_main2">Main2Activity</string>
+    <string name="title_activity_portfolio_detail">portfolio_detail</string>
+    <string name="title_activity_stock_detail">stock_detail</string>
+</resources>

@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:focusableInTouchMode="true"
+    android:background="#151515"
+    android:clickable="true">
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:focusable="false"
+    android:focusableInTouchMode="false">
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="fill_parent"
+        android:orientation="horizontal"
+        android:paddingBottom="-5dp"
+        android:background="@color/black"
+        android:focusable="false"
+        android:focusableInTouchMode="false">
+    <TextView
+        android:layout_width="30dp"
+        android:layout_height="fill_parent"
+        android:focusable="false"
+        android:focusableInTouchMode="false"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="fill_parent"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Large Text"
+        android:textSize="30dp"
+        android:gravity="center_vertical"
+        android:textColor="#ffff"
+        android:id="@+id/portfolio_name"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+
+        android:layout_gravity="center_horizontal|top" />
+    <TextView
+        android:layout_width="30dp"
+        android:layout_height="fill_parent"
+        android:focusable="false"
+        android:focusableInTouchMode="false"/>
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:focusable="false"
+        android:focusableInTouchMode="false">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Large Text"
+            android:textAlignment="center"
+            android:gravity="center_horizontal"
+            android:layout_gravity="center_horizontal"
+            android:textColor="#ffff"
+            android:textSize="17dp"
+            android:id="@+id/total_gain_loss"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            />
+        
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="G/L"
+            android:textSize="17dp"
+            android:textColor="#ffff"
+
+            android:gravity="center_horizontal"
+            android:layout_gravity="center_horizontal"
+            android:textAlignment="center"
+            android:focusable="false"
+            android:focusableInTouchMode="false"/>
+
+        
+        
+    </LinearLayout>
+
+
+
+
+
+
+
+</LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:layout_height="wrap_content"
+        android:weightSum="2"
+        android:clickable="false"
+        android:focusable="false"
+        android:focusableInTouchMode="false">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:focusable="false"
+            android:focusableInTouchMode="false">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="Large Text"
+                android:textAlignment="center"
+                android:textSize="17dp"
+                android:textColor="#ffff"
+                android:id="@+id/total_value"
+
+                android:layout_weight="7"
+                android:gravity="center_horizontal"
+                android:layout_gravity="center_horizontal"
+                android:focusable="false"
+                android:focusableInTouchMode="false"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="Total Value"
+                android:textColor="#ffff"
+                android:layout_weight="3"
+                android:textAlignment="center"
+                android:textSize="17dp"
+                android:gravity="center_horizontal"
+                android:layout_gravity="center_horizontal"
+                android:focusable="false"
+                android:focusableInTouchMode="false"/>
+            
+            
+            
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:focusable="false"
+            android:focusableInTouchMode="false">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="Large Text"
+                android:textAlignment="center"
+                android:textColor="#ffff"
+                android:id="@+id/total_sharecount"
+                android:layout_weight="7.2"
+                android:textSize="17dp"
+                android:gravity="center_horizontal"
+                android:layout_gravity="center_horizontal"
+                android:focusable="false"
+                android:focusableInTouchMode="false"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="Total Shares"
+                android:textColor="#ffff"
+                android:layout_weight="2.8"
+                android:textAlignment="center"
+                android:textSize="17dp"
+                android:gravity="center_horizontal"
+                android:layout_gravity="center_horizontal"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                />
+            
+            
+
+        </LinearLayout>
+
+    </LinearLayout>
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+
+    
+
+</LinearLayout>
