@@ -1,5 +1,6 @@
 package com.f5.stockmeister;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
@@ -7,10 +8,20 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
 import com.astuetz.PagerSlidingTabStrip;
 import com.f5.stockmeister.model_realm.count;
 import com.f5.stockmeister.model_realm.stock;
+
+import org.json.JSONObject;
+
+import java.util.HashMap;
+import java.util.Map;
 
 import io.realm.Realm;
 
@@ -21,6 +32,12 @@ public class MainActivity extends AppCompatActivity {
     public static int portfolio_count=0;
 
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        update();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -164,6 +181,36 @@ public class MainActivity extends AppCompatActivity {
         return !ranBefore;
     }
 
+    void update(){
+
+        StringRequest balanceRequest = new StringRequest(Request.Method.POST, "http://stockmeister-stockm.rhcloud.com/update/", new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                Toast.makeText(getApplicationContext(), response, Toast.LENGTH_LONG).show();
+               //parse json here
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                //no interet or other issues
+                Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_LONG).show();
+            }
+        }) {
+            @Override
+            protected Map<String, String> getParams() {
+                //passing params
+                Map<String, String> params = new HashMap<String, String>();
+                params.put("uname", "username");
+                params.put("pass", "password");
+
+                return params;
+            }
+
+        };
+        //adding created request to Volley request queue to execute.
+        AppController.getInstance().addToRequestQueue(balanceRequest);
+    }
 
 
 }
