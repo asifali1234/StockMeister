@@ -19,7 +19,17 @@ public class portfolio_detail extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_portfolio_detail);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+
+
+
+
+
+
+        Intent intent = getIntent();
+        if(intent!=null&&intent.hasExtra("portfolio")) {
+            port = (portfolio) intent.getSerializableExtra("portfolio");
+        }
+        toolbar.setTitle(port.getName());
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -30,18 +40,14 @@ public class portfolio_detail extends AppCompatActivity {
             }
         });
 
-
-        Intent intent = getIntent();
-        if(intent!=null&&intent.hasExtra("portfolio")) {
-            port = (portfolio) intent.getSerializableExtra("portfolio");
-        }
-
-
         LinearLayout layout = (LinearLayout) findViewById(R.id.detail);
-        TextView tv = new TextView(this) ;
-        tv.setText(port.getName()+"\n\t"+port.getTotal_gain_loss()+"\n\t"+port.getTotal_share_count()+"\n\t"+port.getTotal_value());
-        //csfcsfdsgdg
+        TextView tv = new TextView(this);
+        tv.setText(port.getName() + "\n\t" + port.getTotal_gain_loss() + "\n\t" + port.getTotal_share_count()+"\n\t"+port.getTotal_value());
+
         layout.addView(tv);
+
+
+
     }
 
 }

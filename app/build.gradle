@@ -35,6 +35,7 @@ dependencies {
     compile 'com.github.arimorty:floatingsearchview:1.1.2'
     compile files('libs/mpandroidchartlibrary-2-1-6.jar')
     compile 'com.melnykov:floatingactionbutton:1.3.0'
+    compile 'com.github.bmarrdev:android-DecoView-charting:v0.9.5'
 
 
 

@@ -1,15 +1,80 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLay231dpout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto" android:layout_width="match_parent"
-    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:layout_height="match_parent" android:paddingLeft="5dp"
+    android:paddingRight="5dp"
+    android:paddingTop="5dp"
+    android:paddingBottom="5dp"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:showIn="@layout/activity_portfolio_detail"
     tools:context="com.f5.stockmeister.portfolio_detail"
     android:id="@+id/detail"
-    android:orientation="vertical">
+    android:orientation="vertical"
 
-</LinearLayout>
+    >
+    <ViewFlipper
+        android:layout_width="match_parent"
+        android:layout_height="231dp"
+        >
+        <TextView
+            android:layout_width="268dp"
+            android:layout_height="231dp"
+
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="5893"
+            android:background="@drawable/circle"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:textSize="40dp"
+            android:id="@+id/t1" />
+        <TextView
+            android:layout_width="268dp"
+            android:layout_height="231dp"
+
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="58as3"
+            android:background="@drawable/circle"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:textSize="40dp"
+            android:id="@+id/t2"
+            android:layout_weight="0.05" />
+        <TextView
+            android:layout_width="268dp"
+            android:layout_height="231dp"
+
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="589sdf3"
+            android:background="@drawable/circle"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:textSize="40dp"
+            android:id="@+id/t3"
+            android:layout_weight="0.05" />
+        <TextView
+            android:layout_width="268dp"
+            android:layout_height="231dp"
+
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="58fgjh93"
+            android:background="@drawable/circle"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:textSize="40dp"
+            android:id="@+id/t4"
+            android:layout_weight="0.05" />
+    </ViewFlipper>
+
+    <ListView
+        android:id="@+id/list1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:divider="#876980"
+        android:dividerHeight="4dp"
+        android:descendantFocusability="beforeDescendants"
+        />
+
+
+
+</LinearLay231dpout>

@@ -6,10 +6,123 @@
     android:weightSum="1"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".MainActivity"
-    android:background="#303030"
+
     >
+    <ViewFlipper
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="237dp"
+                android:layout_height="202dp"
 
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="5893"
+                android:background="@drawable/circle"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:textSize="40dp"
+                android:id="@+id/t1" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="45dp"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="Total G/L"
+                android:textSize="40dp"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="237dp"
+                android:layout_height="202dp"
+
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="5893"
+                android:background="@drawable/circle"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:textSize="40dp"
+                android:id="@+id/t2" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="45dp"
+                android:text="Total G/L %"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:textSize="40dp"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="237dp"
+                android:layout_height="202dp"
+
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="5893"
+                android:background="@drawable/circle"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:textSize="40dp"
+                android:id="@+id/t3"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="45dp"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="Total Value"
+                android:textSize="40dp"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="237dp"
+                android:layout_height="202dp"
+
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="5893"
+                android:background="@drawable/circle"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:textSize="40dp"
+                android:id="@+id/t4" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="45dp"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="Total Shares"
+                android:textSize="40dp"/>
+        </LinearLayout>
+    </ViewFlipper>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="13dp"
+        android:textSize="25dp"
+        android:text="Stocks :"/>
+
+    <ListView
+        android:id="@+id/list1"
+        android:layout_width="match_parent"
+        android:layout_height="315dp"
+        android:divider="#876980"
+        android:dividerHeight="4dp"
+        android:descendantFocusability="beforeDescendants"
+        />
 
 
 </LinearLayout>
