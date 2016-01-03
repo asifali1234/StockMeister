@@ -40,6 +40,7 @@ public class portfolio_detail extends AppCompatActivity {
         LinearLayout layout = (LinearLayout) findViewById(R.id.detail);
         TextView tv = new TextView(this) ;
         tv.setText(port.getName()+"\n\t"+port.getTotal_gain_loss()+"\n\t"+port.getTotal_share_count()+"\n\t"+port.getTotal_value());
+        //csfcsfdsgdg
         layout.addView(tv);
     }
 
