@@ -1,6 +1,5 @@
 package com.f5.stockmeister;
 
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
@@ -15,10 +14,9 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.astuetz.PagerSlidingTabStrip;
+import com.f5.stockmeister.adapters.adapter;
 import com.f5.stockmeister.model_realm.count;
 import com.f5.stockmeister.model_realm.stock;
-
-import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.Map;

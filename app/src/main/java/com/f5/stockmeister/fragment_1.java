@@ -11,6 +11,7 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.f5.stockmeister.adapters.port_adapter;
 import com.f5.stockmeister.model_realm.portfolio;
 import com.melnykov.fab.FloatingActionButton;
 
@@ -52,7 +53,7 @@ public class fragment_1 extends Fragment {
         RealmResults<portfolio> po = MainActivity.realm.where(portfolio.class).findAll();
 
         list= (ListView) view.findViewById(R.id.list);
-        list.setClickable(true);
+
 
 
 
@@ -64,6 +65,7 @@ public class fragment_1 extends Fragment {
 
         list.setAdapter(port);
 
+        list.setClickable(true);
 
 
         b.setOnClickListener(new View.OnClickListener() {
