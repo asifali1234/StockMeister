@@ -197,6 +197,7 @@ public class MainActivity extends AppCompatActivity {
                     int count = jsonArray.length();
 
                     for (int i=0;i<count;i++){
+                        
                          stock stock = new stock();
                         JSONObject jsonObject = jsonArray.getJSONObject(i);
                         stock.setYearLow(Float.parseFloat(jsonObject.getString("YearLow")));
