@@ -6,6 +6,9 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.Toast;
+
+import com.f5.stockmeister.model_realm.stock;
 
 public class stock_detail extends AppCompatActivity {
 
@@ -13,9 +16,13 @@ public class stock_detail extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_stock_detail);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        Toolbar toolbar2 = (Toolbar) findViewById(R.id.toolbar2);
 
+        stock stock= AppController.stock;
+
+        Toast.makeText(getApplicationContext(),stock.getName()+" dg",Toast.LENGTH_LONG).show();
+
+        toolbar2.setTitle(stock.getName());
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override

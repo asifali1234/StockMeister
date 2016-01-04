@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLay231dpout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto" android:layout_width="match_parent"
     android:layout_height="match_parent" android:paddingLeft="5dp"
@@ -13,57 +14,110 @@
     android:orientation="vertical"
 
     >
+
     <ViewFlipper
+        android:flipInterval="200"
         android:layout_width="match_parent"
-        android:layout_height="231dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/flip"
+
         >
-        <TextView
-            android:layout_width="268dp"
-            android:layout_height="231dp"
 
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="5893"
-            android:background="@drawable/llll"
-            android:layout_gravity="center"
-            android:gravity="center"
-            android:textSize="40dp"
-            android:id="@+id/t1" />
-        <TextView
-            android:layout_width="268dp"
-            android:layout_height="231dp"
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="150dp"
+                android:layout_height="124dp"
 
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="58as3"
-            android:background="@drawable/llll"
-            android:layout_gravity="center"
-            android:gravity="center"
-            android:textSize="40dp"
-            android:id="@+id/t2"
-            android:layout_weight="0.05" />
-        <TextView
-            android:layout_width="268dp"
-            android:layout_height="231dp"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="5893"
+                android:background="@drawable/llll"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:textSize="30dp"
+                android:id="@+id/t3"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="45dp"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="Total Value"
+                android:textSize="30dp"/>
+        </LinearLayout>
 
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="589sdf3"
-            android:background="@drawable/llll"
-            android:layout_gravity="center"
-            android:gravity="center"
-            android:textSize="40dp"
-            android:id="@+id/t3"
-            android:layout_weight="0.05" />
-        <TextView
-            android:layout_width="268dp"
-            android:layout_height="231dp"
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="150dp"
+                android:layout_height="124dp"
 
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="58fgjh93"
-            android:background="@drawable/llll"
-            android:layout_gravity="center"
-            android:gravity="center"
-            android:textSize="40dp"
-            android:id="@+id/t4"
-            android:layout_weight="0.05" />
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="5893"
+                android:background="@drawable/llll"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:textSize="30dp"
+                android:id="@+id/t4" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="45dp"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="Total Shares"
+                android:textSize="30dp"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="150dp"
+                android:layout_height="124dp"
+
+
+                android:text="5893"
+                android:background="@drawable/llll"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:textSize="30dp"
+                android:id="@+id/t1" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="45dp"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="Total G/L"
+                android:textSize="30dp"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="150dp"
+                android:layout_height="124dp"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="5893"
+                android:background="@drawable/llll"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:textSize="30dp"
+                android:id="@+id/t2" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="45dp"
+                android:text="Total G/L %"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:textSize="30dp"/>
+        </LinearLayout>
     </ViewFlipper>
 
     <ListView
@@ -71,10 +125,10 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:divider="#876980"
+        android:paddingTop="6dp"
         android:dividerHeight="4dp"
         android:descendantFocusability="beforeDescendants"
         />
 
 
-
-</LinearLay231dpout>
+</LinearLayout>

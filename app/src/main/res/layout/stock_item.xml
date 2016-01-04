@@ -5,31 +5,73 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:weightSum="10">
-
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="2">
     <com.hookedonplay.decoviewlib.DecoView
         android:layout_width="100dp"
-        android:layout_height="116dp"
+        android:layout_height="100dp"
         android:id="@+id/dec"
+        android:paddingTop="4dp"
+        android:paddingBottom="4dp"
 
-        android:layout_weight="2" />
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+
+        />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="AAAK"
+            android:id="@+id/textView3"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true" />
+
+
+    </RelativeLayout>
     <FrameLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:gravity="center"
         android:layout_weight="3.5">
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingLeft="9dp"
-        android:text="stock"
-        android:textSize="35dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/name"
+            android:text="stock"
+            android:textSize="40dp"
+            android:layout_gravity="left|center_vertical" />
     </FrameLayout>
 
     <LinearLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_weight="4.5">
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_weight="4.5"
+        android:weightSum="2">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="456"
+            android:layout_weight="1"
+            android:textSize="33dp"
+            android:id="@+id/chng"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="59%"
+            android:textSize="33dp"
+            android:id="@+id/perc"
+            android:layout_weight="1"/>
 
     </LinearLayout>
 </LinearLayout>

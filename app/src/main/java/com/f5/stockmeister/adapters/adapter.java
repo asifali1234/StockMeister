@@ -1,8 +1,12 @@
-package com.f5.stockmeister;
+package com.f5.stockmeister.adapters;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+
+import com.f5.stockmeister.fragment_1;
+import com.f5.stockmeister.fragment_2;
+import com.f5.stockmeister.fragment_3;
 
 /**
  * Created by Gopi on 24-Dec-15.

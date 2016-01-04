@@ -5,11 +5,15 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListView;
 
+import com.f5.stockmeister.adapters.stock_adapter;
 import com.f5.stockmeister.model_realm.portfolio;
+import com.f5.stockmeister.model_realm.stock;
 
 import java.util.ArrayList;
 
+import io.realm.RealmResults;
 
 
 public class fragment_3 extends Fragment {

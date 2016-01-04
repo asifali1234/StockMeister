@@ -6,6 +6,8 @@ import android.text.TextUtils;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.Volley;
+import com.f5.stockmeister.model_realm.portfolio;
+import com.f5.stockmeister.model_realm.stock;
 
 /**
  * Created by ajmalazeez on 03/01/16.
@@ -20,6 +22,8 @@ public class AppController extends Application {
 
     private static AppController mInstance;
 
+    public  static portfolio portfolio;
+    public  static stock stock;
     @Override
     public void onCreate() {
         super.onCreate();

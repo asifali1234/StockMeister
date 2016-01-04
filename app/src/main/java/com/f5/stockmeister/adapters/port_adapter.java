@@ -1,4 +1,4 @@
-package com.f5.stockmeister;
+package com.f5.stockmeister.adapters;
 
 import android.content.Context;
 import android.graphics.Color;
@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
+import com.f5.stockmeister.R;
 import com.f5.stockmeister.model_realm.portfolio;
 
 import java.util.ArrayList;

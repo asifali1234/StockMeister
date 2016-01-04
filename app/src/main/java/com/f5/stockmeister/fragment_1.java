@@ -11,6 +11,7 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.f5.stockmeister.adapters.port_adapter;
 import com.f5.stockmeister.model_realm.portfolio;
 import com.melnykov.fab.FloatingActionButton;
 
@@ -52,7 +53,7 @@ public class fragment_1 extends Fragment {
         RealmResults<portfolio> po = MainActivity.realm.where(portfolio.class).findAll();
 
         list= (ListView) view.findViewById(R.id.list);
-        list.setClickable(true);
+
 
 
 
@@ -64,6 +65,7 @@ public class fragment_1 extends Fragment {
 
         list.setAdapter(port);
 
+        list.setClickable(true);
 
 
         b.setOnClickListener(new View.OnClickListener() {
@@ -81,13 +83,15 @@ public class fragment_1 extends Fragment {
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View vi, int position, long id) {
-                Snackbar.make(view, "clicked", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-                portfolio p = (portfolio) port.getItem(position);
-                Intent intent = new Intent(getContext(), portfolio_detail.class).putExtra("portfolio", p);
-                startActivity(intent);
-                System.out.println("aaaaaaadxasdffffff b                ffffffffgsfafdsddgggggggsa");
-                Toast.makeText(getContext(),"adsfd",Toast.LENGTH_LONG).show();
+
+                AppController.portfolio = (portfolio) port.getItem(position);
+                try {
+                    Intent intent = new Intent(getContext(), portfolio_detail.class);
+                    startActivity(intent);
+                } catch (Exception e) {e.printStackTrace();
+                    Toast.makeText(getActivity(),e.toString(),Toast.LENGTH_LONG).show();
+                }
+
             }
         });
         return view;
