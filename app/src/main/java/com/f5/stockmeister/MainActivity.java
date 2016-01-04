@@ -18,6 +18,9 @@ import com.f5.stockmeister.adapters.adapter;
 import com.f5.stockmeister.model_realm.count;
 import com.f5.stockmeister.model_realm.stock;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -186,6 +189,12 @@ public class MainActivity extends AppCompatActivity {
             public void onResponse(String response) {
                 Toast.makeText(getApplicationContext(), response, Toast.LENGTH_LONG).show();
                //parse json here
+                try {
+                    JSONObject jsonObject= new JSONObject(response);
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
 
             }
         }, new Response.ErrorListener() {

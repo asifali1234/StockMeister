@@ -47,18 +47,7 @@ public class fragment_3 extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.frag3, container, false);
 
-        ListView list= (ListView) view.findViewById(R.id.list1);
-        list.setClickable(true);
 
-        RealmResults<stock> po = MainActivity.realm.where(stock.class).findAll();
-
-        final stock_adapter port= new stock_adapter(getContext(),R.layout.stock_item);
-        for (stock c : po) {
-            port.add(c);
-
-        }
-
-        list.setAdapter(port);
 
 
 
