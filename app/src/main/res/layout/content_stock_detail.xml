@@ -67,7 +67,8 @@
 
     <ViewFlipper
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:id="@+id/flip2">
 
         <com.github.mikephil.charting.charts.LineChart
             android:layout_width="match_parent"
