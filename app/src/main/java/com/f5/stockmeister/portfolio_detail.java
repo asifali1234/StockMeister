@@ -1,6 +1,7 @@
 package com.f5.stockmeister;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -18,11 +19,20 @@ import android.widget.ViewFlipper;
 import com.f5.stockmeister.adapters.stock_adapter;
 import com.f5.stockmeister.model_realm.portfolio;
 import com.f5.stockmeister.model_realm.stock;
+import com.github.mikephil.charting.charts.PieChart;
+import com.github.mikephil.charting.data.Entry;
+import com.github.mikephil.charting.data.PieData;
+import com.github.mikephil.charting.data.PieDataSet;
+import com.github.mikephil.charting.utils.ColorTemplate;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import io.realm.RealmResults;
 
 public class portfolio_detail extends AppCompatActivity {
     portfolio port;
+    List<stock> st;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,6 +40,7 @@ public class portfolio_detail extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
 
         portfolio portfolio = AppController.portfolio;
+        st=portfolio.getStocks();
         toolbar.setTitle(portfolio.getName());
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
@@ -62,16 +73,80 @@ public class portfolio_detail extends AppCompatActivity {
             }
         });
 
-        ViewFlipper flip = (ViewFlipper) findViewById(R.id.flip);
-        flip.setAutoStart(true);
-        flip.startFlipping();
-        flip.setFlipInterval(2000);
+        PieChart mChart = (PieChart)findViewById(R.id.chart);
+
+        PieData data = new PieData(getxvals(), getdataset());
+
+        data.setValueTextSize(14f);
+        data.setValueTextColor(Color.rgb(0, 0, 0));
+        mChart.setData(data);
+        mChart.highlightValues(null);
+        mChart.setDescription("after school activities");
+        mChart.invalidate();
 
 //        LinearLayout layout = (LinearLayout) findViewById(R.id.detail);
 //        TextView tv = new TextView(this);
 //        tv.setText(port.getName() + "\n\t" + port.getTotal_gain_loss() + "\n\t" + port.getTotal_share_count()+"\n\t"+port.getTotal_value());
 //
 //        layout.addView(tv);
+
+
+
+    }
+
+    private PieDataSet getdataset() {
+
+
+        ArrayList<Entry> yVals1 = new ArrayList<Entry>();
+
+
+        ArrayList  set1=new ArrayList();
+        int i=0;
+        for (stock c : st) {
+
+            yVals1.add(new Entry(c.getCount(),i));
+            i++;
+
+        }
+
+        PieDataSet dataSet = new PieDataSet(yVals1, "tasks");
+        dataSet.setSliceSpace(1f);
+        dataSet.setSelectionShift(10f);
+
+
+        ArrayList<Integer> colors = new ArrayList<Integer>();
+
+        for (int c : ColorTemplate.VORDIPLOM_COLORS)
+            colors.add(c);
+
+        for (int c : ColorTemplate.JOYFUL_COLORS)
+            colors.add(c);
+
+        for (int c : ColorTemplate.COLORFUL_COLORS)
+            colors.add(c);
+
+        for (int c : ColorTemplate.LIBERTY_COLORS)
+            colors.add(c);
+
+        for (int c : ColorTemplate.PASTEL_COLORS)
+            colors.add(c);
+
+        colors.add(ColorTemplate.getHoloBlue());
+
+        dataSet.setColors(colors);
+        return dataSet;
+    }
+
+    private ArrayList<String> getxvals() {
+
+        ArrayList<String> xVals = new ArrayList<String>();
+        for (stock c : st) {
+            xVals.add(c.getName());
+
+        }
+
+        return xVals;
+
 
 
 
