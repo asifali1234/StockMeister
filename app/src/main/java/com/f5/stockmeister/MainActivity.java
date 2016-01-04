@@ -15,6 +15,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.astuetz.PagerSlidingTabStrip;
+import com.f5.stockmeister.adapters.adapter;
 import com.f5.stockmeister.model_realm.count;
 import com.f5.stockmeister.model_realm.stock;
 
@@ -190,7 +191,7 @@ public class MainActivity extends AppCompatActivity {
         StringRequest balanceRequest = new StringRequest(Request.Method.POST, "http://stockmeister-stockm.rhcloud.com/getdata/", new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-                Toast.makeText(getApplicationContext(), response, Toast.LENGTH_LONG).show();
+               // Toast.makeText(getApplicationContext(), response, Toast.LENGTH_LONG).show();
                //parse json here
                 try {
                     JSONArray jsonArray = new JSONArray(response);
@@ -254,7 +255,8 @@ public class MainActivity extends AppCompatActivity {
 
                         update(stock);
                     }
-                } catch (JSONException e) {
+                } catch (Exception e) {
+                    Toast.makeText(getApplicationContext(),e.toString(),Toast.LENGTH_LONG).show();
                     e.printStackTrace();
                 }
 
@@ -263,7 +265,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onErrorResponse(VolleyError error) {
                 //no interet or other issues
-                Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), "on error response", Toast.LENGTH_LONG).show();
             }
         }) {
             @Override
