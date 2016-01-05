@@ -204,7 +204,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-                    JSONArray jsonArray = new JSONArray(response);
+                    JSONArray jsonArray = new JSONObject(response).getJSONArray("results");
                     int count = jsonArray.length();
 
                     for (int i=0;i<count;i++){
@@ -212,6 +212,7 @@ public class MainActivity extends AppCompatActivity {
                          stock stock = new stock();
                         JSONObject jsonObject = jsonArray.getJSONObject(i);
                        // stock.setYearLow(Float.parseFloat(jsonObject.getString("YearLow")));
+
                         ///stock.setDividendShare(Float.parseFloat(jsonObject.getString("DividendShare")));
                         //stock.setChangeFromFiftydayMovingAverage(Float.parseFloat(jsonObject.getString("ChangeFromFiftydayMovingAverage")));
                         //stock.setPricePaid(Float.parseFloat(jsonObject.getString("PricePaid")));
@@ -223,7 +224,7 @@ public class MainActivity extends AppCompatActivity {
                         stock.setLastTradePriceOnly(Float.parseFloat(jsonObject.getString("LastTradePriceOnly")));
                         //stock.setYearHigh(Float.parseFloat(jsonObject.getString("YearHigh")));
                         //stock.setLastTradeTime(jsonObject.getString("YearHigh"));
-                        stock.setSymbol(jsonObject.getString("AAPL"));
+                        stock.setSymbol(jsonObject.getString("Symbol"));
                         //stock.setAskRealtime(Float.parseFloat(jsonObject.getString("AskRealtime")));
                         //stock.setPreviousClose(Float.parseFloat(jsonObject.getString("PreviousClose")));
                         //stock.setDaysRangeRealtime(jsonObject.getString("DaysRangeRealtime"));
@@ -266,7 +267,7 @@ public class MainActivity extends AppCompatActivity {
                         update(stock);
                     }
                 } catch (Exception e) {
-                    Toast.makeText(getApplicationContext(),response,Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(),e.getMessage(),Toast.LENGTH_LONG).show();
                     e.printStackTrace();
                     Log.e("ffffffff",response);
                 }

@@ -10,8 +10,8 @@
         android:layout_height="wrap_content"
         android:layout_weight="2">
     <com.hookedonplay.decoviewlib.DecoView
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
         android:id="@+id/dec"
         android:paddingTop="4dp"
         android:paddingBottom="4dp"
@@ -26,6 +26,7 @@
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:text="AAAK"
+            android:textSize="15dp"
             android:textColor="#727272"
             android:id="@+id/textView3"
             android:layout_centerVertical="true"
