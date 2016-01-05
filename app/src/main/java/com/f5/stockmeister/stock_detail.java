@@ -29,10 +29,10 @@ public class stock_detail extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_stock_detail);
         Toolbar toolbar2 = (Toolbar) findViewById(R.id.toolbar2);
-        ViewFlipper flip = (ViewFlipper) findViewById(R.id.flip2);
+        /*ViewFlipper flip = (ViewFlipper) findViewById(R.id.flip2);
         flip.setAutoStart(true);
         flip.startFlipping();
-        flip.setFlipInterval(10000);
+        flip.setFlipInterval(10000);*/
 
         mChart = (LineChart) findViewById(R.id.inter_day);
         create_chart();
@@ -43,25 +43,18 @@ public class stock_detail extends AppCompatActivity {
         Toast.makeText(getApplicationContext(),stock.getName()+" dg",Toast.LENGTH_LONG).show();
 
         toolbar2.setTitle(stock.getName());
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+
     }
     public void create_chart()
     {
         //background color
-        mChart.setBackgroundColor(Color.rgb(200, 200, 200));
+       // mChart.setBackgroundColor(Color.WHITE);
 
         //find
-        mChart.setViewPortOffsets(0, 20, 0, 0);                         /////find//////////////////////////////////////////////////////////////////////////
+        //mChart.setViewPortOffsets(0, 20, 0, 0);                         /////find//////////////////////////////////////////////////////////////////////////
 
         //set description
-        mChart.setDescription("description");
+        mChart.setDescription("Intra day");
         //mChart.setDescriptionColor(Color.rgb(0,0,0));
         //mChart.setDescriptionPosition(10,50);
         //mChart.setDescriptionTextSize();
@@ -95,7 +88,7 @@ public class stock_detail extends AppCompatActivity {
 
         //make x axis and y axis- interpolate them
         XAxis x = mChart.getXAxis();
-        x.setTextColor(Color.YELLOW);
+        x.setTextColor(Color.BLACK);
         x.setDrawGridLines(false);
         x.setEnabled(true);
         //x.setTextSize();
@@ -108,13 +101,13 @@ public class stock_detail extends AppCompatActivity {
         x.setAvoidFirstLastClipping(true);                             /////find//////////////////////////////////////////////////////////////////////////
 
         YAxis y = mChart.getAxisLeft();
-        y.setTextColor(Color.RED);
+        y.setTextColor(Color.BLACK);
         y.setDrawGridLines(true);
         y.setEnabled(true);
-        y.setDrawAxisLine(true);
+        //y.setDrawAxisLine(true);
         //y.setAxisLineColor();
         //y.setAxisLineWidth();
-        y.setDrawLabels(true);
+       y.setDrawLabels(true);
         //y.setGridColor();
         y.setPosition(YAxis.YAxisLabelPosition.INSIDE_CHART);
         y.setDrawTopYLabelEntry(true);
@@ -183,20 +176,20 @@ public class stock_detail extends AppCompatActivity {
         set1.setDrawCircles(true);
         set1.setLineWidth(2f);
         set1.setCircleSize(4f);
-        set1.setColor(Color.rgb(0,0,0));
+        set1.setColor(Color.rgb(0, 0, 0));
         set1.setCircleColor(Color.WHITE);
-        set1.setCircleColorHole(Color.rgb(0,0,0));
-        set1.setHighLightColor(Color.rgb(244, 117, 117));
-
+        set1.setCircleColorHole(Color.rgb(0, 0, 0));
+        set1.setHighLightColor(Color.BLACK);
+        //255,193,7)
         set1.setFillColor(Color.rgb(255,193,7));
-        set1.setFillAlpha(100);
+        //set1.setFillAlpha(100);
         set1.setDrawHorizontalHighlightIndicator(true);
-        set1.setFillFormatter(new FillFormatter() {
+       /* set1.setFillFormatter(new FillFormatter() {
             @Override
             public float getFillLinePosition(LineDataSet dataSet, LineDataProvider dataProvider) {
                 return -10;
             }
-        });
+        });*/
 
         // create a data object with the datasets
         LineData data = new LineData(xVals, set1);

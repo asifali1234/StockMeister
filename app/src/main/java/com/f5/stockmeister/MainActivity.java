@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
@@ -84,11 +85,11 @@ public class MainActivity extends AppCompatActivity {
             realm.beginTransaction();
             realm.copyToRealmOrUpdate(count);
             realm.commitTransaction();
-
+            update();
             //WHEN APP RUNS FOR THE FIRST TIME
         }
         else
-        {
+        {update();
             count count= realm.where(count.class).equalTo("id",0).findFirst();
             stock_count=count.getStock_count();
             portfolio_count = count.getPortfolio_count();
@@ -194,6 +195,15 @@ public class MainActivity extends AppCompatActivity {
                // Toast.makeText(getApplicationContext(), response, Toast.LENGTH_LONG).show();
                //parse json here
                 try {
+
+                    //THIS IS THE RESPONSE... PARSE THIS
+                    //{"results": [{"LastTradePriceOnly": "105.26", "Symbol": "AAPL", "Name": "Apple Inc.", "Change": "-2.06"}, {"LastTradePriceOnly": "55.48", "Symbol": "MSFT", "Name": "Microsoft Corporatio", "Change": "-0.83"}, {"LastTradePriceOnly": "105.26", "Symbol": "AAPL", "Name": "Apple Inc.", "Change": "-2.06"}, {"LastTradePriceOnly": "55.48", "Symbol": "MSFT", "Name": "Microsoft Corporatio", "Change": "-0.83"}, {"LastTradePriceOnly": "105.35", "Symbol": "AAPL", "Name": "Apple Inc.", "Change": "+0.09"}, {"LastTradePriceOnly": "54.80", "Symbol": "MSFT", "Name": "Microsoft Corporatio", "Change": "-0.68"}]}
+
+
+
+
+
+
                     JSONArray jsonArray = new JSONArray(response);
                     int count = jsonArray.length();
 
@@ -201,63 +211,64 @@ public class MainActivity extends AppCompatActivity {
                         
                          stock stock = new stock();
                         JSONObject jsonObject = jsonArray.getJSONObject(i);
-                        stock.setYearLow(Float.parseFloat(jsonObject.getString("YearLow")));
-                        stock.setDividendShare(Float.parseFloat(jsonObject.getString("DividendShare")));
-                        stock.setChangeFromFiftydayMovingAverage(Float.parseFloat(jsonObject.getString("ChangeFromFiftydayMovingAverage")));
-                        stock.setPricePaid(Float.parseFloat(jsonObject.getString("PricePaid")));
-                        stock.setDaysLow(Float.parseFloat(jsonObject.getString("DaysLow")));
-                        stock.setChangeFromYearLow(Float.parseFloat(jsonObject.getString("ChangeFromYearLow")));
-                        stock.setFiftydayMovingAverage(Float.parseFloat(jsonObject.getString("FiftydayMovingAverage")));
-                        stock.setEarningsShare(Float.parseFloat(jsonObject.getString("EarningsShare")));
-                        stock.setAverageDailyVolume(Float.parseFloat(jsonObject.getString("AverageDailyVolume")));
+                       // stock.setYearLow(Float.parseFloat(jsonObject.getString("YearLow")));
+                        ///stock.setDividendShare(Float.parseFloat(jsonObject.getString("DividendShare")));
+                        //stock.setChangeFromFiftydayMovingAverage(Float.parseFloat(jsonObject.getString("ChangeFromFiftydayMovingAverage")));
+                        //stock.setPricePaid(Float.parseFloat(jsonObject.getString("PricePaid")));
+                        //stock.setDaysLow(Float.parseFloat(jsonObject.getString("DaysLow")));
+                        //stock.setChangeFromYearLow(Float.parseFloat(jsonObject.getString("ChangeFromYearLow")));
+                        //stock.setFiftydayMovingAverage(Float.parseFloat(jsonObject.getString("FiftydayMovingAverage")));
+                        //stock.setEarningsShare(Float.parseFloat(jsonObject.getString("EarningsShare")));
+                        //stock.setAverageDailyVolume(Float.parseFloat(jsonObject.getString("AverageDailyVolume")));
                         stock.setLastTradePriceOnly(Float.parseFloat(jsonObject.getString("LastTradePriceOnly")));
-                        stock.setYearHigh(Float.parseFloat(jsonObject.getString("YearHigh")));
-                        stock.setLastTradeTime(jsonObject.getString("YearHigh"));
+                        //stock.setYearHigh(Float.parseFloat(jsonObject.getString("YearHigh")));
+                        //stock.setLastTradeTime(jsonObject.getString("YearHigh"));
                         stock.setSymbol(jsonObject.getString("AAPL"));
-                        stock.setAskRealtime(Float.parseFloat(jsonObject.getString("AskRealtime")));
-                        stock.setPreviousClose(Float.parseFloat(jsonObject.getString("PreviousClose")));
-                        stock.setDaysRangeRealtime(jsonObject.getString("DaysRangeRealtime"));
-                        stock.setVolume(Float.parseFloat(jsonObject.getString("Volume")));
-                        stock.setAsk(Float.parseFloat(jsonObject.getString("Ask")));
-                        stock.setPercentChange(jsonObject.getString("PercentChange"));
-                        stock.setChangeRealtime(Float.parseFloat(jsonObject.getString("ChangeRealtime")));
+                        //stock.setAskRealtime(Float.parseFloat(jsonObject.getString("AskRealtime")));
+                        //stock.setPreviousClose(Float.parseFloat(jsonObject.getString("PreviousClose")));
+                        //stock.setDaysRangeRealtime(jsonObject.getString("DaysRangeRealtime"));
+                        //stock.setVolume(Float.parseFloat(jsonObject.getString("Volume")));
+                        //stock.setAsk(Float.parseFloat(jsonObject.getString("Ask")));
+                        //stock.setPercentChange(jsonObject.getString("PercentChange"));
+                        //stock.setChangeRealtime(Float.parseFloat(jsonObject.getString("ChangeRealtime")));
                         stock.setChange(Float.parseFloat(jsonObject.getString("Change")));
-                        stock.setMarketCapitalization(jsonObject.getString("MarketCapitalization"));
+                        //stock.setMarketCapitalization(jsonObject.getString("MarketCapitalization"));
                         stock.setName(jsonObject.getString("Name"));
-                        stock.setAfterHoursChangeRealtime(Float.parseFloat(jsonObject.getString("AfterHoursChangeRealtime")));
-                        stock.setChangePercentRealtime(jsonObject.getString("ChangePercentRealtime"));
-                        stock.setDaysValueChange(Float.parseFloat(jsonObject.getString("DaysValueChange")));
-                        stock.setLastTradeTime(jsonObject.getString("LastTradeTime"));
-                        stock.setStockExchange(jsonObject.getString("StockExchange"));
-                        stock.setLastTradeRealtimeWithTime(jsonObject.getString("LastTradeRealtimeWithTime"));
-                        stock.setMarketCapRealtime(jsonObject.getString("MarketCapRealtime"));
-                        stock.setPERatio(Float.parseFloat(jsonObject.getString("PERatio")));
-                        stock.setDaysValueChangeRealtime(Float.parseFloat(jsonObject.getString("DaysValueChangeRealtime")));
-                        stock.setChangeFromYearHigh(Float.parseFloat(jsonObject.getString("ChangeFromYearHigh")));
+                        //stock.setAfterHoursChangeRealtime(Float.parseFloat(jsonObject.getString("AfterHoursChangeRealtime")));
+                        //stock.setChangePercentRealtime(jsonObject.getString("ChangePercentRealtime"));
+                        //stock.setDaysValueChange(Float.parseFloat(jsonObject.getString("DaysValueChange")));
+                        //stock.setLastTradeTime(jsonObject.getString("LastTradeTime"));
+                        //stock.setStockExchange(jsonObject.getString("StockExchange"));
+                        //stock.setLastTradeRealtimeWithTime(jsonObject.getString("LastTradeRealtimeWithTime"));
+                        //stock.setMarketCapRealtime(jsonObject.getString("MarketCapRealtime"));
+                        //stock.setPERatio(Float.parseFloat(jsonObject.getString("PERatio")));
+                        //stock.setDaysValueChangeRealtime(Float.parseFloat(jsonObject.getString("DaysValueChangeRealtime")));
+                        //stock.setChangeFromYearHigh(Float.parseFloat(jsonObject.getString("ChangeFromYearHigh")));
                         stock.setChangeinPercent(jsonObject.getString("ChangeinPercent"));
-                        stock.setPercentChangeFromFiftydayMovingAverage(jsonObject.getString("PercentChangeFromFiftydayMovingAverage"));
-                        stock.setDaysHigh(Float.parseFloat(jsonObject.getString("DaysHigh")));
-                        stock.setPercentChangeFromYearLow(jsonObject.getString("PercentChangeFromYearLow"));
-                        stock.setTradeDate(jsonObject.getString("TradeDate"));
-                        stock.setLastTradeTime(jsonObject.getString("LastTradeWithTime"));
-                        stock.setBidRealtime(Float.parseFloat(jsonObject.getString("BidRealtime")));
-                        stock.setYearRange(jsonObject.getString("YearRange"));
-                        stock.setOrderBookRealtime(Float.parseFloat(jsonObject.getString("OrderBookRealtime")));
-                        stock.setHoldingsGainRealtime(Float.parseFloat(jsonObject.getString("HoldingsGainRealtime")));
-                        stock.setCurrency(jsonObject.getString("Currency"));
-                        stock.setDaysRange(jsonObject.getString("DaysRange"));
-                        stock.setPERatioRealtime(Float.parseFloat(jsonObject.getString("PERatioRealtime")));
-                        stock.setPercebtChangeFromYearHigh(jsonObject.getString("PercebtChangeFromYearHigh"));
-                        stock.setOpen(Float.parseFloat(jsonObject.getString("Open")));
-                        stock.setMoreInfo(jsonObject.getString("MoreInfo"));
-                        stock.setBid(Float.parseFloat(jsonObject.getString("Bid")));
+                        //stock.setPercentChangeFromFiftydayMovingAverage(jsonObject.getString("PercentChangeFromFiftydayMovingAverage"));
+//                        stock.setDaysHigh(Float.parseFloat(jsonObject.getString("DaysHigh")));
+//                        stock.setPercentChangeFromYearLow(jsonObject.getString("PercentChangeFromYearLow"));
+//                        stock.setTradeDate(jsonObject.getString("TradeDate"));
+//                        stock.setLastTradeTime(jsonObject.getString("LastTradeWithTime"));
+//                        stock.setBidRealtime(Float.parseFloat(jsonObject.getString("BidRealtime")));
+//                        stock.setYearRange(jsonObject.getString("YearRange"));
+//                        stock.setOrderBookRealtime(Float.parseFloat(jsonObject.getString("OrderBookRealtime")));
+//                        stock.setHoldingsGainRealtime(Float.parseFloat(jsonObject.getString("HoldingsGainRealtime")));
+//                        stock.setCurrency(jsonObject.getString("Currency"));
+//                        stock.setDaysRange(jsonObject.getString("DaysRange"));
+//                        stock.setPERatioRealtime(Float.parseFloat(jsonObject.getString("PERatioRealtime")));
+//                        stock.setPercebtChangeFromYearHigh(jsonObject.getString("PercebtChangeFromYearHigh"));
+//                        stock.setOpen(Float.parseFloat(jsonObject.getString("Open")));
+//                        stock.setMoreInfo(jsonObject.getString("MoreInfo"));
+//                        stock.setBid(Float.parseFloat(jsonObject.getString("Bid")));
 
 
                         update(stock);
                     }
                 } catch (Exception e) {
-                    Toast.makeText(getApplicationContext(),e.toString(),Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(),response,Toast.LENGTH_LONG).show();
                     e.printStackTrace();
+                    Log.e("ffffffff",response);
                 }
 
             }

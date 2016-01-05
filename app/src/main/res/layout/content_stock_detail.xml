@@ -17,7 +17,7 @@
     tools:showIn="@layout/activity_stock_detail" tools:context="com.f5.stockmeister.stock_detail">
     <LinearLayout
         android:layout_width="match_parent"
-        android:orientation="horizontal"
+        android:orientation="vertical"
         android:weightSum="2"
         android:layout_height="wrap_content">
 
@@ -30,48 +30,35 @@
             android:textSize="40dp"
             android:id="@+id/stock_name"
             android:layout_weight="1"/>
-        <LinearLayout
+        <TextView
             android:layout_width="wrap_content"
-
-
-            android:orientation="vertical"
-            android:weightSum="2"
-            android:layout_weight="1"
-            android:layout_height="match_parent">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:gravity="center"
-                android:textSize="20dp"
-                android:text="7"
-                android:id="@+id/val_change"
-                android:layout_weight="1"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="20dp"
-                android:layout_gravity="center"
-                android:gravity="center"
-                android:text="3.5%"
-                android:id="@+id/change_perc"
-                android:layout_weight="1"/>
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:textColor="#388e3c"
+            android:text="+20 (+5.2 %)"
+            android:textSize="22dp"
+            android:id="@+id/chng"
+            android:layout_weight="1"/>
 
 
 
-        </LinearLayout>
 
     </LinearLayout>
-
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="5dp"
+    ></LinearLayout>
 
     <ViewFlipper
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="258dp"
         android:id="@+id/flip2">
 
         <com.github.mikephil.charting.charts.LineChart
             android:layout_width="match_parent"
             android:layout_height="270dp"
+            android:paddingTop="20dp"
             android:id="@+id/intra_day"/>
 
         <com.github.mikephil.charting.charts.LineChart
