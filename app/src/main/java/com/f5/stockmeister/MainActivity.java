@@ -15,6 +15,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.astuetz.PagerSlidingTabStrip;
+import com.f5.stockmeister.adapters.adapter;
 import com.f5.stockmeister.model_realm.count;
 import com.f5.stockmeister.model_realm.stock;
 
@@ -193,7 +194,8 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), response, Toast.LENGTH_LONG).show();
                //parse json here
                 try {
-                    JSONArray jsonArray = new JSONArray(response);
+
+                    JSONArray jsonArray = new JSONObject(response).getJSONArray("results");
                     int count = jsonArray.length();
 
                     for (int i=0;i<count;i++){
@@ -254,8 +256,9 @@ public class MainActivity extends AppCompatActivity {
 
                         update(stock);
                     }
-                } catch (JSONException e) {
+                } catch (Exception e) {
                     e.printStackTrace();
+                    Toast.makeText(getApplicationContext(),"DB error"+e.getMessage(),Toast.LENGTH_LONG).show();
                 }
 
             }
@@ -270,8 +273,8 @@ public class MainActivity extends AppCompatActivity {
             protected Map<String, String> getParams() {
                 //passing params
                 Map<String, String> params = new HashMap<String, String>();
-                params.put("uname", "username");
-                params.put("pass", "password");
+//                params.put("uname", "username");
+//                params.put("pass", "password");
 
                 return params;
             }
