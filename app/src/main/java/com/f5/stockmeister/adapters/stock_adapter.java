@@ -2,15 +2,21 @@ package com.f5.stockmeister.adapters;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.graphics.PointF;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.OvershootInterpolator;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import com.f5.stockmeister.R;
 import com.f5.stockmeister.model_realm.stock;
 import com.hookedonplay.decoviewlib.DecoView;
+import com.hookedonplay.decoviewlib.charts.EdgeDetail;
+import com.hookedonplay.decoviewlib.charts.SeriesItem;
+import com.hookedonplay.decoviewlib.charts.SeriesLabel;
+import com.hookedonplay.decoviewlib.events.DecoEvent;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -66,6 +72,54 @@ public class stock_adapter extends ArrayAdapter {
             vh.text2 = (TextView) row.findViewById(R.id.name);
             vh.text3 = (TextView) row.findViewById(R.id.chng);
             vh.text4 = (TextView) row.findViewById(R.id.perc);
+
+
+// Create background track
+            vh.dec.addSeries(new SeriesItem.Builder(Color.argb(255, 218, 218, 218))
+                    .setRange(0, 100, 100)
+                    .setInitialVisibility(false)
+                    .setLineWidth(32f)
+                    .build());
+
+//Create data series track
+            SeriesItem seriesItem1 = new SeriesItem.Builder(Color.argb(255, 64, 196, 0))
+                    .setRange(0, 100, 0)
+                    .setLineWidth(32f)
+                    .build();
+
+            int series1Index = vh.dec.addSeries(seriesItem1);
+
+            vh.dec.addEvent(new DecoEvent.Builder(DecoEvent.EventType.EVENT_SHOW, true)
+                    .setDelay(1000)
+                    .setDuration(2000)
+                    .build());
+
+            vh.dec.addEvent(new DecoEvent.Builder(25).setIndex(series1Index).setDelay(4000).build());
+            vh.dec.addEvent(new DecoEvent.Builder(100).setIndex(series1Index).setDelay(8000).build());
+            vh.dec.addEvent(new DecoEvent.Builder(10).setIndex(series1Index).setDelay(12000).build());
+            vh.dec.configureAngles(360, 0);
+
+            vh.dec.addSeries(new SeriesItem.Builder(Color.argb(255, 218, 218, 218)).build());
+
+            SeriesItem seriesItem2 = new SeriesItem.Builder(Color.argb(255, 64, 196, 0))
+                    .setRange(0, 70, 0)
+                    .setInitialVisibility(false)
+                    .setLineWidth(32f)
+                    .addEdgeDetail(new EdgeDetail(EdgeDetail.EdgeType.EDGE_OUTER, Color.parseColor("#22000000"), 0.4f))
+                    .setSeriesLabel(new SeriesLabel.Builder("Percent %.0f%%").build())
+                    .setInterpolator(new OvershootInterpolator())
+                    .setShowPointWhenEmpty(false)
+                    .setCapRounded(false)
+                    .setInset(new PointF(32f, 32f))
+                    .setDrawAsPoint(false)
+                    .setSpinClockwise(true)
+                    .setSpinDuration(6000)
+                    .setChartStyle(SeriesItem.ChartStyle.STYLE_DONUT)
+                    .build();
+
+
+
+
             row.setTag(vh);
         }
         else

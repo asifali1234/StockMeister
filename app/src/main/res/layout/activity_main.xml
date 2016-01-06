@@ -6,7 +6,7 @@
     android:orientation="vertical">
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"
-        android:background="#FFD81E"
+        android:background="#FFC107"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_collapseMode="pin"
@@ -19,11 +19,12 @@
         android:layout_width="match_parent"
         android:layout_height="34dp"
         android:textSize="17sp"
-        android:background="#FFD81E"
+        android:background="#FFC107"
         android:textColor="#000"
-        app:pstsDividerColor="#FF1C1C"
-        app:pstsIndicatorColor="#FF1C1C"
-        app:pstsUnderlineColor="#FF1C1C"
+        app:pstsDividerColor="#FFC107"
+        app:pstsIndicatorHeight="4dp"
+        app:pstsIndicatorColor="#000"
+        app:pstsUnderlineColor="#000"
         app:pstsTabPaddingLeftRight="14dp"/>
 
     <android.support.v4.view.ViewPager

@@ -4,14 +4,7 @@ import android.os.Parcel;
 
 import com.arlib.floatingsearchview.suggestions.model.SearchSuggestion;
 
-/**
- * Copyright (c) 2015 Ari C
- * <p/>
- * ColorSuggestion ---
- * <p/>
- * Author Ari
- * Created on 10/19/2015.
- */
+
 public  class searchSuggestion implements SearchSuggestion {
 
     private stockname mColor;

@@ -90,13 +90,6 @@ public class stock extends RealmObject implements Serializable {
 
     /*   ///////////////////////////////////EXAMPLE DATA FOR PARSING  - DETERMINED DATA TYPES WITH THIS
     "symbol":"BHP.AX",
-            "Ask":"18.35",
-            "AverageDailyVolume":"10577900",
-            "Bid":"18.30",
-            "AskRealtime":null,
-            "BidRealtime":null,
-
-
             "Change":"+0.93",
 
             "Currency":"AUD",
@@ -105,7 +98,14 @@ public class stock extends RealmObject implements Serializable {
             "DividendShare":null,
             "LastTradeDate":"12/24/2015",
             "TradeDate":null,
-            "EarningsShare":"0.36",
+            "Earning"Ask":"18.35",
+            "AverageDailyVolume":"10577900",
+            "Bid":"18.30",
+            "AskRealtime":null,
+            "BidRealtime":null,
+
+
+            sShare":"0.36",
 
 
 
@@ -118,7 +118,7 @@ public class stock extends RealmObject implements Serializable {
             "HoldingsGainRealtime":null,
             "MoreInfo":null,
             "OrderBookRealtime":null,
-            "MarketCapitalization":"97.59B",
+        0    "MarketCapitalization":"97.59B",
             "MarketCapRealtime":null,
 
             "ChangeFromYearLow":"2.09",

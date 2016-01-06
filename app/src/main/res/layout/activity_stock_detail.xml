@@ -12,7 +12,7 @@
 
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar2"
-            android:background="#FFD81E"
+            android:background="#FFC107"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_collapseMode="pin"
@@ -23,9 +23,6 @@
 
     <include layout="@layout/content_stock_detail" />
 
-    <android.support.design.widget.FloatingActionButton android:id="@+id/fab"
-        android:layout_width="wrap_content" android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end" android:layout_margin="@dimen/fab_margin"
-        android:src="@android:drawable/ic_dialog_email" />
+
 
 </android.support.design.widget.CoordinatorLayout>
