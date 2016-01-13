@@ -14,7 +14,7 @@ import com.f5.stockmeister.fragment_3;
 public class adapter extends FragmentPagerAdapter {
 
     final int PAGE_COUNT = 3;
-    private String tabTitles[] = new String[] { "Portfolios", "Watchlist", "Account" };
+    private String tabTitles[] = new String[] { "Portfolios", "Top Gainers", "Top Losers" };
 
     public adapter(FragmentManager fm) {
         super(fm);

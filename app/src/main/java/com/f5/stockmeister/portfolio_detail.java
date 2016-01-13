@@ -2,7 +2,6 @@ package com.f5.stockmeister;
 
 import android.content.Intent;
 import android.graphics.Color;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -10,11 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.LinearLayout;
 import android.widget.ListView;
-import android.widget.TextView;
-import android.widget.Toast;
-import android.widget.ViewFlipper;
 
 import com.f5.stockmeister.adapters.stock_adapter;
 import com.f5.stockmeister.model_realm.portfolio;
@@ -27,8 +22,6 @@ import com.github.mikephil.charting.utils.ColorTemplate;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import io.realm.RealmResults;
 
 public class portfolio_detail extends AppCompatActivity {
     portfolio port;
@@ -118,20 +111,20 @@ public class portfolio_detail extends AppCompatActivity {
 
         for (int c : ColorTemplate.VORDIPLOM_COLORS)
             colors.add(c);
-
-        for (int c : ColorTemplate.JOYFUL_COLORS)
-            colors.add(c);
-
-        for (int c : ColorTemplate.COLORFUL_COLORS)
-            colors.add(c);
-
+//
+//        for (int c : ColorTemplate.JOYFUL_COLORS)
+//            colors.add(c);
+//
+//        for (int c : ColorTemplate.COLORFUL_COLORS)
+//            colors.add(c);
+//
         for (int c : ColorTemplate.LIBERTY_COLORS)
             colors.add(c);
+//
+//        for (int c : ColorTemplate.PASTEL_COLORS)
+//            colors.add(c);
 
-        for (int c : ColorTemplate.PASTEL_COLORS)
-            colors.add(c);
-
-        colors.add(ColorTemplate.getHoloBlue());
+//        colors.add(ColorTemplate.getHoloBlue());
 
         dataSet.setColors(colors);
         return dataSet;

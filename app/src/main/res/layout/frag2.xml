@@ -2,10 +2,12 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <TextView
-        android:id="@+id/txt2"
-        android:text="Fragment #X"
-        android:layout_width="220dp"
-        android:layout_height="150dp"
-        android:gravity="center" />
+    <ListView
+        android:id="@+id/gainer"
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
+        android:divider="#909090"
+        android:paddingTop="6dp"
+        android:dividerHeight="2dp"
+        android:descendantFocusability="beforeDescendants" />
 </LinearLayout>

@@ -1,6 +1,5 @@
 package com.f5.stockmeister;
 
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
@@ -21,7 +20,6 @@ import com.f5.stockmeister.model_realm.count;
 import com.f5.stockmeister.model_realm.stock;
 
 import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.HashMap;
@@ -234,7 +232,7 @@ public class MainActivity extends AppCompatActivity {
                         //stock.setChangeRealtime(Float.parseFloat(jsonObject.getString("ChangeRealtime")));
                         stock.setChange(Float.parseFloat(jsonObject.getString("Change")));
                         //stock.setMarketCapitalization(jsonObject.getString("MarketCapitalization"));
-                        stock.setName(jsonObject.getString("Name"));
+                        stock.setName(jsonObject.getString("Name").toLowerCase());
                         //stock.setAfterHoursChangeRealtime(Float.parseFloat(jsonObject.getString("AfterHoursChangeRealtime")));
                         //stock.setChangePercentRealtime(jsonObject.getString("ChangePercentRealtime"));
                         //stock.setDaysValueChange(Float.parseFloat(jsonObject.getString("DaysValueChange")));
@@ -245,7 +243,7 @@ public class MainActivity extends AppCompatActivity {
                         //stock.setPERatio(Float.parseFloat(jsonObject.getString("PERatio")));
                         //stock.setDaysValueChangeRealtime(Float.parseFloat(jsonObject.getString("DaysValueChangeRealtime")));
                         //stock.setChangeFromYearHigh(Float.parseFloat(jsonObject.getString("ChangeFromYearHigh")));
-                        stock.setChangeinPercent(jsonObject.getString("ChangeinPercent"));
+//                        stock.setChangeinPercent(jsonObject.getString("ChangeinPercent"));
                         //stock.setPercentChangeFromFiftydayMovingAverage(jsonObject.getString("PercentChangeFromFiftydayMovingAverage"));
 //                        stock.setDaysHigh(Float.parseFloat(jsonObject.getString("DaysHigh")));
 //                        stock.setPercentChangeFromYearLow(jsonObject.getString("PercentChangeFromYearLow"));

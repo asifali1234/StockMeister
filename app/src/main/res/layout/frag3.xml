@@ -10,7 +10,14 @@
 
     >
 
-
+    <ListView
+        android:id="@+id/loser"
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
+        android:divider="#909090"
+        android:paddingTop="6dp"
+        android:dividerHeight="2dp"
+        android:descendantFocusability="beforeDescendants" />
 
 
 
