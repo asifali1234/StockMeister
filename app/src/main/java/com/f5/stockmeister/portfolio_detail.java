@@ -70,11 +70,11 @@ public class portfolio_detail extends AppCompatActivity {
 
         PieData data = new PieData(getxvals(), getdataset());
 
-        data.setValueTextSize(14f);
+        data.setValueTextSize(10f);
         data.setValueTextColor(Color.rgb(0, 0, 0));
         mChart.setData(data);
         mChart.highlightValues(null);
-        mChart.setDescription("after school activities");
+        mChart.setDescription("stocks");
         mChart.invalidate();
 
 //        LinearLayout layout = (LinearLayout) findViewById(R.id.detail);

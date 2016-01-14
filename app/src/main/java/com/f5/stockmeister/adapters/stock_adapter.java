@@ -13,6 +13,11 @@ import com.f5.stockmeister.model_realm.stock;
 import com.hookedonplay.decoviewlib.DecoView;
 import com.hookedonplay.decoviewlib.charts.SeriesItem;
 
+import org.json.JSONObject;
+
+import java.io.BufferedReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,10 +27,18 @@ import java.util.List;
 public class stock_adapter extends ArrayAdapter {
 
     private List list = new ArrayList();
+    URL url;
+
+    HttpURLConnection urlConnection =null;
+    BufferedReader reader=null;
+
+    String JsonStr = null;
+    static JSONObject jObj = null;
+    static String json = "";
+
     public stock_adapter(Context context, int resource) {
         super(context, resource);
     }
-
     static class viewholder
     {
         DecoView dec;
@@ -69,18 +82,7 @@ public class stock_adapter extends ArrayAdapter {
             vh.text4 = (TextView) row.findViewById(R.id.perc);
 
 
-            vh.dec.addSeries(new SeriesItem.Builder(Color.argb(255, 218, 218, 218))
-                    .setRange(0, 100, 100)
-                    .setInitialVisibility(true)
-                    .setLineWidth(15f)
-                    .build());
 
-            SeriesItem seriesItem1 = new SeriesItem.Builder(Color.rgb(255,193,7))
-                    .setRange(0, 100, 45).setSpinDuration(4000).setInitialVisibility(true)
-                   .setLineWidth(15f)
-                    .build();
-
-            int series1Index = vh.dec.addSeries(seriesItem1);
 
 
 //            vh.dec.addSeries(new SeriesItem.Builder(Color.rgb(255, 255, 0)).setInitialVisibility(false).setLineWidth(10f).setRange(0, 100, 50).setDrawAsPoint(false).setChartStyle(SeriesItem.ChartStyle.STYLE_DONUT).setSpinDuration(500).build());
@@ -147,13 +149,29 @@ public class stock_adapter extends ArrayAdapter {
         vh.text2.setText(p.getName());
         vh.text1.setText(p.getSymbol());
 
+        vh.dec.addSeries(new SeriesItem.Builder(Color.argb(255, 218, 218, 218))
+                .setRange(0, 100, 100)
+                .setInitialVisibility(true)
+                .setLineWidth(15f)
+                .build());
 
+        SeriesItem seriesItem1 = new SeriesItem.Builder(Color.rgb(255,193,7))
+                .setRange(0, 100, 56).setSpinDuration(4000).setInitialVisibility(true)
+                .setLineWidth(15f)
+                .build();
+
+        int series1Index = vh.dec.addSeries(seriesItem1);
         vh.text3.setText(Float.toString(p.getChange()));
         if(p.getChange()<0)
-            vh.text3.setTextColor(Color.rgb(255,0,0));
-        else
-            vh.text3.setTextColor(Color.rgb(0,200,0));
-        String chngperc =p.getChangeinPercent();
+        { vh.text3.setTextColor(Color.rgb(255,0,0));
+            vh.text4.setTextColor(Color.rgb(255,0,0));}
+        else {
+            vh.text3.setTextColor(Color.rgb(0, 200, 0));
+            vh.text4.setTextColor(Color.rgb(0, 200, 0));
+        }
+        vh.text4.setText(p.getChangeinPercent());
+
+
 /*       float perc = Float.parseFloat(chngperc.substring(0,7));
         vh.text4.setText(Float.toString(perc));
         if(perc<0)

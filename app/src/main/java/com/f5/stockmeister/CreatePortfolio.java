@@ -26,6 +26,12 @@ import com.f5.stockmeister.model_realm.count;
 import com.f5.stockmeister.model_realm.portfolio;
 import com.f5.stockmeister.model_realm.stock;
 
+import org.json.JSONObject;
+
+import java.io.BufferedReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.util.ArrayList;
 import java.util.List;
 
 import io.realm.RealmResults;
@@ -35,6 +41,20 @@ public class CreatePortfolio extends AppCompatActivity {
     int stockcount[];
     float stockvalue[];
     private int portid=0;
+
+
+
+    private List list = new ArrayList();
+    URL url;
+
+    HttpURLConnection urlConnection =null;
+    BufferedReader reader=null;
+
+    String JsonStr = null;
+    static JSONObject jObj = null;
+    static String json = "";
+
+
     LinearLayout l;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,8 +83,74 @@ public class CreatePortfolio extends AppCompatActivity {
 
                 for(int i=0;i<portid;i++)
                 {
-                    MainActivity.realm.beginTransaction();
-                    stock result = MainActivity.realm.where(stock.class).contains("name", stockname[i]).findFirst();
+
+
+                    stock result = new stock();
+                    result.setName(stockname[i]);
+
+                    String u = "https://query.yahooapis.com/v1/public/yql?q=select * from yahoo.finance.quotes where symbol %3D '"+result.getSymbol()+"'&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys&callback=";
+
+//                    try {
+//                        url = new URL(u);
+//                    } catch (MalformedURLException e) {
+//                        e.printStackTrace();
+//                    }
+//
+//
+////                    try{
+//
+//
+//                        //url= new URL("http://api.openweathermap.org/data/2.5/forecast/daily?q=683110&mode=json&units=metric&cnt=7");
+//
+//                        urlConnection = (HttpURLConnection) url.openConnection();
+//                        urlConnection.setRequestMethod("GET");
+//                        urlConnection.connect();
+//
+//                        InputStream inputStream = urlConnection.getInputStream();
+//                        StringBuilder buffer = new StringBuilder();
+//
+//                        if(inputStream==null)
+//                        {
+//                            JsonStr=null;
+//
+//                        }
+//                        else {
+//                            reader = new BufferedReader(new InputStreamReader(inputStream));
+//                            String line;
+//
+//                            while ((line = reader.readLine()) != null) {
+//                                buffer.append(line).append("\n");
+//
+//                            }
+//
+//                            if (buffer.length() == 0) {
+//                                JsonStr = null;
+//
+//                            }
+//                            else {
+//
+//                                JsonStr = buffer.toString();
+//                                //Log.v(LOG_TAG,"Forecast JSON String: " + forecastJsonStr);
+//                            }
+//                        }
+//
+//                    } catch (IOException e) {
+//                        Log.e("dddd", "ERROR", e);
+//                    }finally {
+//                        if (urlConnection != null)
+//                            urlConnection.disconnect();
+//                        if (reader != null)
+//                            try {
+//                                reader.close();
+//                            } catch (IOException e) {
+//                                Log.e("dddd", "ERROR", e);
+//                            }
+//                    }
+//
+//
+//                    Toast.makeText(getApplicationContext(),JsonStr,Toast.LENGTH_LONG).show();
+
+
 
 
                     result.setCount(stockcount[i]);
@@ -73,7 +159,8 @@ public class CreatePortfolio extends AppCompatActivity {
                     result.setPerc_gain_loss(result.getGain_loss() / result.getBuy_value() * 100);
                     result.setStock_value(result.getCount() * result.getLastTradePriceOnly());
 
-
+                    MainActivity.realm.beginTransaction();
+                    MainActivity.realm.copyToRealmOrUpdate(result);
                     MainActivity.realm.commitTransaction();
                 }
 

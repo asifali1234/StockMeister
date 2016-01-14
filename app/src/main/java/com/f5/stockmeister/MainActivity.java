@@ -243,7 +243,7 @@ public class MainActivity extends AppCompatActivity {
                         //stock.setPERatio(Float.parseFloat(jsonObject.getString("PERatio")));
                         //stock.setDaysValueChangeRealtime(Float.parseFloat(jsonObject.getString("DaysValueChangeRealtime")));
                         //stock.setChangeFromYearHigh(Float.parseFloat(jsonObject.getString("ChangeFromYearHigh")));
-//                        stock.setChangeinPercent(jsonObject.getString("ChangeinPercent"));
+                       stock.setChangeinPercent(jsonObject.getString("ChangeinPercent"));
                         //stock.setPercentChangeFromFiftydayMovingAverage(jsonObject.getString("PercentChangeFromFiftydayMovingAverage"));
 //                        stock.setDaysHigh(Float.parseFloat(jsonObject.getString("DaysHigh")));
 //                        stock.setPercentChangeFromYearLow(jsonObject.getString("PercentChangeFromYearLow"));

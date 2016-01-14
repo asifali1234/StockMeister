@@ -13,8 +13,8 @@
         android:id="@+id/list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:divider="#876980"
-        android:dividerHeight="4dp"
+        android:divider="#909090"
+        android:dividerHeight="1dp"
         android:descendantFocusability="beforeDescendants"
         />
 

@@ -45,7 +45,7 @@ public class fragment_2 extends Fragment {
 
         final stock_adapter port= new stock_adapter(getContext(),R.layout.stock_item);
 
-        RealmResults<stock> stocks = MainActivity.realm.where(stock.class).findAllSorted("Change",true);
+        RealmResults<stock> stocks = MainActivity.realm.where(stock.class).findAllSorted("ChangeinPercent",true);
         for (stock c : stocks) {
             port.add(c);
 
