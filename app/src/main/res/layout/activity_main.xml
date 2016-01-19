@@ -7,24 +7,26 @@
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"
         android:background="#FFC107"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_collapseMode="pin"
-        app:layout_scrollFlags="scroll|enterAlways"
+        android:layout_width="match_parent" android:layout_height="?attr/actionBarSize"
+        app:popupTheme="@style/AppTheme.PopupOverlay"
+        android:fontFamily="sans-serif-medium"
+        android:theme="@style/AppTheme.AppBarOverlay"
+        app:layout_scrollFlags="scroll|exitUntilCollapsed"
         />
 
     <com.astuetz.PagerSlidingTabStrip
         android:id="@+id/tabs"
+        android:fontFamily="sans-serif-medium"
         app:pstsShouldExpand="true"
         android:layout_width="match_parent"
-        android:layout_height="34dp"
-        android:textSize="17sp"
-        android:background="#FFC107"
+        android:layout_height="36dp"
+        android:textSize="15dp"
+        android:background="#fff"
         android:textColor="#000"
-        app:pstsDividerColor="#FFC107"
+        app:pstsDividerColor="#FFf"
         app:pstsIndicatorHeight="4dp"
-        app:pstsIndicatorColor="#000"
-        app:pstsUnderlineColor="#000"
+        app:pstsIndicatorColor="#FFC107"
+        app:pstsUnderlineColor="#FFC107"
         app:pstsTabPaddingLeftRight="14dp"/>
 
     <android.support.v4.view.ViewPager

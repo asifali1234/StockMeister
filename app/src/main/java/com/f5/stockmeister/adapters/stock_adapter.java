@@ -150,18 +150,26 @@ public class stock_adapter extends ArrayAdapter {
         vh.text1.setText(p.getSymbol());
 
         vh.dec.addSeries(new SeriesItem.Builder(Color.argb(255, 218, 218, 218))
-                .setRange(0, 100, 100)
+                .setRange(0,100,100)
                 .setInitialVisibility(true)
-                .setLineWidth(15f)
-                .build());
+                .setLineWidth(15f)                .build());
 
         SeriesItem seriesItem1 = new SeriesItem.Builder(Color.rgb(255,193,7))
-                .setRange(0, 100, 56).setSpinDuration(4000).setInitialVisibility(true)
+                .setRange(0,100,45).setSpinDuration(4000).setInitialVisibility(true)
                 .setLineWidth(15f)
                 .build();
 
         int series1Index = vh.dec.addSeries(seriesItem1);
+        vh.dec.configureAngles(300, 0);
         vh.text3.setText(Float.toString(p.getChange()));
+//
+//        String mp =p.getChangeinPercent();
+//
+//        int tmp=(int)temp;
+//        float dec= tmp-temp;
+//        dec= Float.parseFloat((""+dec).substring(0,2));
+//        temp=tmp+dec;
+        vh.text4.setText(Float.toString(p.getChangeinPercent())+"%");
         if(p.getChange()<0)
         { vh.text3.setTextColor(Color.rgb(255,0,0));
             vh.text4.setTextColor(Color.rgb(255,0,0));}
@@ -169,7 +177,7 @@ public class stock_adapter extends ArrayAdapter {
             vh.text3.setTextColor(Color.rgb(0, 200, 0));
             vh.text4.setTextColor(Color.rgb(0, 200, 0));
         }
-        vh.text4.setText(p.getChangeinPercent());
+
 
 
 /*       float perc = Float.parseFloat(chngperc.substring(0,7));

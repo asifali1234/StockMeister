@@ -2,7 +2,6 @@ package com.f5.stockmeister;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -55,13 +54,19 @@ public class fragment_1 extends Fragment {
         list= (ListView) view.findViewById(R.id.list);
 
 
-
-
+        Object p[] ;
+        p=  po.toArray();
+        for(int i=0;i<p.length;i++)
+        {   portfolio port=(portfolio)p[i];
+            CreatePortfolio.updatePort(port.getName());
+        }
         final port_adapter port= new port_adapter(getContext(),R.layout.port_item);
         for (portfolio c : po) {
-            port.add(c);
+
+                        port.add(c);
 
         }
+
 
         list.setAdapter(port);
 
@@ -71,8 +76,7 @@ public class fragment_1 extends Fragment {
         b.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Snackbar.make(view, "clicked", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+
 
                 Intent intent = new Intent(getContext(), CreatePortfolio.class);
 

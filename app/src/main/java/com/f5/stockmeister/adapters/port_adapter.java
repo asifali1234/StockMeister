@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.f5.stockmeister.R;
@@ -27,7 +28,7 @@ public class port_adapter extends ArrayAdapter {
     static class viewholder
     {
          TextView text1;
-         TextView text2; TextView text4;
+        ImageView img;
         TextView text3;
 
 
@@ -59,9 +60,9 @@ public class port_adapter extends ArrayAdapter {
             row = inflater.inflate(R.layout.port_item, parent, false);
             vh = new viewholder();
             vh.text1 = (TextView) row.findViewById(R.id.portfolio_name);
-            vh.text2 = (TextView) row.findViewById(R.id.total_value);
+            vh.img= (ImageView)row.findViewById(R.id.img);
             vh.text3 = (TextView) row.findViewById(R.id.total_gain_loss);
-            vh.text4 = (TextView) row.findViewById(R.id.total_sharecount);
+
             row.setTag(vh);
         }
         else
@@ -71,14 +72,26 @@ public class port_adapter extends ArrayAdapter {
         }
         portfolio p = (portfolio) getItem(position);
         vh.text1.setText(p.getName());
-        vh.text2.setText(Float.toString(p.getTotal_value()));
 
-        vh.text3.setText(Float.toString(p.getTotal_gain_loss()));
-        if(p.getTotal_gain_loss()<0)
-            vh.text3.setTextColor(Color.rgb(255,0,0));
-        else
-            vh.text3.setTextColor(Color.rgb(0,200,0));
-        vh.text4.setText(Float.toString(p.getTotal_share_count()));
+
+        //vh.text3.setText(Float.toString(p.getTotal_perc_gain_loss())+" %");
+        float temp =p.getTotal_perc_gain_loss();
+        int tmp=(int)temp;
+        float dec= temp-tmp;
+        dec= Float.parseFloat((""+dec).substring(0,2));
+        temp=tmp+dec;
+        if(p.getTotal_perc_gain_loss()<0) {
+            vh.text3.setText(Float.toString(temp).substring(1)+"%");
+            vh.text3.setTextColor(Color.rgb(237, 28, 36));
+            vh.img.setImageResource(R.drawable.down_red);
+        }
+        else {
+            vh.text3.setText(Float.toString(temp)+"%");
+
+            vh.text3.setTextColor(Color.rgb(34, 177, 76));
+            vh.img.setImageResource(R.drawable.up_red);
+        }
+
 
        return row;
     }

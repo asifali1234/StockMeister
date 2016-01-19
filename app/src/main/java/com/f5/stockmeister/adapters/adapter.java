@@ -8,13 +8,11 @@ import com.f5.stockmeister.fragment_1;
 import com.f5.stockmeister.fragment_2;
 import com.f5.stockmeister.fragment_3;
 
-/**
- * Created by Gopi on 24-Dec-15.
- */
+
 public class adapter extends FragmentPagerAdapter {
 
     final int PAGE_COUNT = 3;
-    private String tabTitles[] = new String[] { "Portfolios", "Top Gainers", "Top Losers" };
+    private String tabTitles[] = new String[] { "Portfolios",  "Top Losers", "Top Gainers"};
 
     public adapter(FragmentManager fm) {
         super(fm);

@@ -6,8 +6,9 @@
         android:id="@+id/gainer"
         android:layout_width="match_parent"
         android:layout_height="fill_parent"
-        android:divider="#909090"
+        android:divider="#b6b6b6"
+        android:dividerHeight="0.8dp"
         android:paddingTop="6dp"
-        android:dividerHeight="1dp"
+
         android:descendantFocusability="beforeDescendants" />
 </LinearLayout>

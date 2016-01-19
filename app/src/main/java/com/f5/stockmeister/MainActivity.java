@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
 
-        update();
+        //update();
     }
 
     @Override
@@ -47,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setTitle("StockMeister");
+
         ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager);
         viewPager.setAdapter(new adapter(getSupportFragmentManager()));
         PagerSlidingTabStrip tabsStrip = (PagerSlidingTabStrip) findViewById(R.id.tabs);
@@ -58,18 +59,44 @@ public class MainActivity extends AppCompatActivity {
         if(isFirstTime())
         {
 
-            for(int i=1;i<11;i++) {
+            for(int i=1;i<50;i++) {
                 realm.beginTransaction();
                 stock s = realm.createObject(stock.class);
+                if(i<10)
                 s.setName("stock " + i);
+                else if(i<25)
+                    s.setName("company " + i);
+                else
+                    s.setName("service " + i);
                 s.setSymbol(Integer.toString(i));
                 s.setLastTradePriceOnly((i - 1) * 10 + 1);
-                s.setPreviousClose((i - 1) * 10 + 2);                                       // MOCK DATA
-                s.setChange((i - 1) * 10 + 3);
-                s.setPercentChange(String.valueOf((i - 1) * 10 + 4));
-                s.setLastTradePriceOnly((i - 1) * 10 + 5);
-                s.setBuy_value(((i - 1) * 10 + 6));
-                s.setGain_loss((i - 1) * 10 + 7);
+                //s.setPreviousClose((i - 1) * 10 + 2);                                       // MOCK DATA
+                float temp = (float) (Math.random() * 5);
+                int tmp=(int)temp;
+                float dec= temp-tmp;
+                dec= Float.parseFloat((Float.toString(dec)).substring(0,2));
+                temp=tmp+dec;
+                if(i%2==0) {
+                    s.setChange((float) -(Math.random()*10));
+                    s.setChangeinPercent(-temp);
+                }
+                else
+                {
+                    s.setChange((float) (Math.random()*10));
+                    s.setChangeinPercent(temp);
+                }
+                //s.setLastTradePriceOnly((i - 1) * 10 + 5);
+               /* s.setAsk((i - 1) * 10 + 6);
+                s.setOpen((i - 1) * 10 + 7);
+                s.setDaysLow((i - 1) * 10 + 8);
+                s.setDaysHigh((i - 1) * 10 + 9);
+                s.setYearLow((i - 1) * 10 + 10);
+                s.setYearHigh((i - 1) * 10 + 11);
+                s.setPERatio((i - 1) * 10 + 12);
+                s.setVolume(i * 100 + i);
+                s.setAverageDailyVolume(i * 101 + i);
+                s.setFiftydayMovingAverage((i - 1) * 10 + 13);*/
+
 
 
 
@@ -83,11 +110,11 @@ public class MainActivity extends AppCompatActivity {
             realm.beginTransaction();
             realm.copyToRealmOrUpdate(count);
             realm.commitTransaction();
-            update();
+           // update();
             //WHEN APP RUNS FOR THE FIRST TIME
         }
         else
-        {update();
+        {//update();
             count count= realm.where(count.class).equalTo("id",0).findFirst();
             stock_count=count.getStock_count();
             portfolio_count = count.getPortfolio_count();
@@ -95,47 +122,7 @@ public class MainActivity extends AppCompatActivity {
             //WHEN APP OPENS EVERY TIME AFTER FIRST TIME
         }
 
-        //WHEN APP OPENS EVERY TIME
 
-        //WRITING EXPLAINED
-        //................                             SIMILARLY CLASSES PORTFOLIO AND COUNT CAN BE IMPLEMENTED.. EX IS SHOWN FOR STOCK CLASS FROM MODEL REALM
-        //................
-        stock stock = new stock();
-        /*
-                use SETTER FUNCTIONS to put data to this STOCK OBJECT...... then after all data of a particular stock is set to the stock objects call UPDATE(stock);
-
-                MULTIPLE STOCKS SHOULD BE CREATED SO AS USUAL USE FOR LOOP
-         */
-        //update(stock);
-
-        /*
-
-
-        READING EXPLAINED
-        ................
-        .................
-
-                        RealmResults stocks = realm.where(stock.class).findAll();
-                                                                       .findAllSorted(parameters which is used to query .. ie. certain fieldnames with certain values)
-                                                                       .findfirst(); //change variable type
-
-
-                        then use the object list and get data with proper GETTER METHODS
-
-
-
-                        EX:
-                         stocks = realm.where(stock.class).findAll();
-                            for(stock c:stocks)
-                            {
-                            showStatus(c.getName()+"\n\t"+"current value : "+c.getCurr_value()+"\n\t"+"previous close : "+c.getPrev_close()+"\n\t"+"% change : "+c.getPerc_change());
-                             }
-
-
-
-
-
-         */
 
 
 
@@ -243,7 +230,7 @@ public class MainActivity extends AppCompatActivity {
                         //stock.setPERatio(Float.parseFloat(jsonObject.getString("PERatio")));
                         //stock.setDaysValueChangeRealtime(Float.parseFloat(jsonObject.getString("DaysValueChangeRealtime")));
                         //stock.setChangeFromYearHigh(Float.parseFloat(jsonObject.getString("ChangeFromYearHigh")));
-                       stock.setChangeinPercent(jsonObject.getString("ChangeinPercent"));
+                       stock.setChangeinPercent(Float.parseFloat(jsonObject.getString("ChangeinPercent")));
                         //stock.setPercentChangeFromFiftydayMovingAverage(jsonObject.getString("PercentChangeFromFiftydayMovingAverage"));
 //                        stock.setDaysHigh(Float.parseFloat(jsonObject.getString("DaysHigh")));
 //                        stock.setPercentChangeFromYearLow(jsonObject.getString("PercentChangeFromYearLow"));

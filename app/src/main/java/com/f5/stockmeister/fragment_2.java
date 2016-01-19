@@ -46,8 +46,9 @@ public class fragment_2 extends Fragment {
         final stock_adapter port= new stock_adapter(getContext(),R.layout.stock_item);
 
         RealmResults<stock> stocks = MainActivity.realm.where(stock.class).findAllSorted("ChangeinPercent",true);
-        for (stock c : stocks) {
-            port.add(c);
+        //Toast.makeText(getContext(),stocks.get(0).getChangeinPercent(),Toast.LENGTH_LONG).show();
+        for (int i=0;i<10;i++) {
+            port.add(stocks.get(i));
 
         }
 

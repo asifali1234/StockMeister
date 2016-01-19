@@ -41,7 +41,7 @@ public class CreatePortfolio extends AppCompatActivity {
     int stockcount[];
     float stockvalue[];
     private int portid=0;
-
+    private float buy=0;
 
 
     private List list = new ArrayList();
@@ -84,9 +84,9 @@ public class CreatePortfolio extends AppCompatActivity {
                 for(int i=0;i<portid;i++)
                 {
 
+                    MainActivity.realm.beginTransaction();
+                    stock result = MainActivity.realm.where(stock.class).beginsWith("name",stockname[i]).findFirst();
 
-                    stock result = new stock();
-                    result.setName(stockname[i]);
 
                     String u = "https://query.yahooapis.com/v1/public/yql?q=select * from yahoo.finance.quotes where symbol %3D '"+result.getSymbol()+"'&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys&callback=";
 
@@ -155,12 +155,13 @@ public class CreatePortfolio extends AppCompatActivity {
 
                     result.setCount(stockcount[i]);
                     result.setBuy_value(Float.parseFloat(String.valueOf(stockvalue[i])));
-                    result.setGain_loss(result.getLastTradePriceOnly() - result.getBuy_value());
+                  /*/ result.setGain_loss(result.getLastTradePriceOnly() - result.getBuy_value());                                       //change it
                     result.setPerc_gain_loss(result.getGain_loss() / result.getBuy_value() * 100);
                     result.setStock_value(result.getCount() * result.getLastTradePriceOnly());
+                    buy=buy+stockvalue[i];*/
 
-                    MainActivity.realm.beginTransaction();
-                    MainActivity.realm.copyToRealmOrUpdate(result);
+
+
                     MainActivity.realm.commitTransaction();
                 }
 
@@ -187,10 +188,10 @@ public class CreatePortfolio extends AppCompatActivity {
                     for(int i=0;i<portid;i++) {
                         if (c.getName().equalsIgnoreCase(stockname[i])) {
 
-                           port.setTotal_gain_loss(port.getTotal_gain_loss()+c.getGain_loss());
-                            port.setTotal_perc_gain_loss((port.getTotal_perc_gain_loss()+c.getPerc_gain_loss()));
+                           /*port.setTotal_gain_loss(port.getTotal_gain_loss() + c.getGain_loss());
+
                             port.setTotal_value(port.getTotal_value()+c.getStock_value());
-                            port.setTotal_share_count(port.getTotal_share_count()+c.getCount());
+                            port.setTotal_share_count(port.getTotal_share_count()+c.getCount());*/
 
                             port.getStocks().add(c);
                             break;
@@ -200,9 +201,12 @@ public class CreatePortfolio extends AppCompatActivity {
 
 
                 }
+                //port.setTotal_perc_gain_loss((port.getTotal_gain_loss()/port.getTotal_value()*100));
                 for(int i=0;i<portid;i++)
                     stockname[i]="";
+
                 MainActivity.realm.commitTransaction();
+                updatePort(port.getName());
                 portid=0;
 
 
@@ -335,5 +339,32 @@ public class CreatePortfolio extends AppCompatActivity {
 
 
     }
+    public static void updatePort(String name)
+    {
+        MainActivity.realm.beginTransaction();
+        portfolio port = MainActivity.realm.where(portfolio.class).beginsWith("name",name).findFirst();
+        float buy=0;
+        port.setTotal_gain_loss(0);
+
+        port.setTotal_value(0);
+        port.setTotal_share_count(0);
+        port.setTotal_perc_gain_loss(0);
+         for(stock c:port.getStocks())
+        {
+            c.setGain_loss(c.getLastTradePriceOnly() - c.getBuy_value());                                       //change it
+            c.setPerc_gain_loss((c.getGain_loss() / c.getBuy_value()) * 100);
+            c.setStock_value(c.getCount() * c.getLastTradePriceOnly());
+            buy++;
+            port.setTotal_gain_loss(port.getTotal_gain_loss() + c.getGain_loss());
+
+            port.setTotal_value(port.getTotal_value() + c.getStock_value());
+            port.setTotal_share_count(port.getTotal_share_count() + c.getCount());
+            port.setTotal_perc_gain_loss((port.getTotal_perc_gain_loss()+c.getPerc_gain_loss()));
+        }
+        port.setTotal_perc_gain_loss(port.getTotal_perc_gain_loss()/buy);
+        MainActivity.realm.commitTransaction();
+    }
+
+
 
 }

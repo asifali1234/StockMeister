@@ -2,13 +2,8 @@ package com.f5.stockmeister;
 
 import android.graphics.Color;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.View;
-import android.widget.Toast;
-import android.widget.ViewFlipper;
 
 import com.f5.stockmeister.model_realm.stock;
 import com.github.mikephil.charting.charts.LineChart;
@@ -17,8 +12,6 @@ import com.github.mikephil.charting.components.YAxis;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
-import com.github.mikephil.charting.formatter.FillFormatter;
-import com.github.mikephil.charting.interfaces.LineDataProvider;
 
 import java.util.ArrayList;
 
@@ -40,10 +33,9 @@ public class stock_detail extends AppCompatActivity {
         create_chart();
         stock stock= AppController.stock;
 
-        Toast.makeText(getApplicationContext(),stock.getName()+" dg",Toast.LENGTH_LONG).show();
-
-        toolbar2.setTitle(stock.getName());
-
+        System.out.println(stock.getChangeinPercent() + " dg");
+                toolbar2.setTitle(stock.getName());
+        //toolbar2.setTitle(stock.getChangeinPercent()+" dg");
     }
     public void create_chart()
     {

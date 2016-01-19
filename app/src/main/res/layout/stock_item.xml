@@ -27,8 +27,9 @@
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:text="AAAK"
-            android:textSize="15dp"
+            android:textSize="18dp"
             android:textColor="#727272"
+            android:fontFamily="sans-serif-condensed"
             android:id="@+id/textView3"
             android:layout_centerVertical="true"
             android:layout_centerHorizontal="true" />
@@ -48,6 +49,8 @@
             android:layout_height="wrap_content"
             android:id="@+id/name"
            android:width="200dp"
+            android:padding="4dp"
+            android:fontFamily="sans-serif-condensed"
             android:text="stock"
             android:textColor="#727272"
             android:textSize="31dp"
@@ -59,7 +62,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-
+        android:padding="4dp"
         android:weightSum="2">
         <TextView
             android:layout_width="wrap_content"
@@ -68,9 +71,11 @@
             android:gravity="center"
             android:text="456"
             android:layout_weight="1"
-
+            android:fontFamily="sans-serif-condensed"
             android:textSize="25dp"
-            android:id="@+id/chng"/>
+            android:id="@+id/chng"
+            android:maxLines="1"
+            android:minLines="1" />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
@@ -78,9 +83,12 @@
             android:gravity="center"
             android:text="59%"
             android:textSize="25dp"
-            android:textColor="#727272"
+            android:fontFamily="sans-serif-condensed"
+
             android:id="@+id/perc"
-            android:layout_weight="1"/>
+            android:layout_weight="1"
+            android:minLines="1"
+            android:maxLines="1" />
 
     </LinearLayout>
 </LinearLayout>

@@ -3,8 +3,6 @@ package com.f5.stockmeister;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -36,14 +34,7 @@ public class portfolio_detail extends AppCompatActivity {
         st=portfolio.getStocks();
         toolbar.setTitle(portfolio.getName());
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+
 
         ListView list= (ListView) findViewById(R.id.list1);
         list.setClickable(true);

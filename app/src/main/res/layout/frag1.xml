@@ -5,7 +5,8 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:clickable="true">
+    android:clickable="true"
+    >
 
 
 
@@ -13,21 +14,29 @@
         android:id="@+id/list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:divider="#909090"
-        android:dividerHeight="1dp"
+        android:divider="#b6b6b6"
+        android:dividerHeight="0.8dp"
+        android:background="#e9e9e9"
         android:descendantFocusability="beforeDescendants"
         />
 
     <com.melnykov.fab.FloatingActionButton
         android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
         android:layout_gravity="bottom|right"
         android:layout_margin="16dp"
-        android:src="@drawable/ic_invert_colors_black_24dp"
-        fab:fab_colorNormal="#FF1C1C"
-        fab:fab_colorPressed="@color/primary_pressed"
-        fab:fab_colorRipple="@color/ripple" />
+        android:padding="15dp"
+        android:src="@drawable/ic_add_black_24dp"
+        android:cropToPadding="true"
+        android:background="#FFC107"
+        app:fab_colorNormal="#FFC107"
+        fab:fab_background="#FFC107"
+        fab:fab_colorNormal="#FFC107"
+        fab:fab_colorPressed="#FFC107"
+        fab:fab_colorRipple="#FFC107"
+        android:foregroundTint="#FFC107"
+        android:backgroundTint="#FFC107" />
 
 
 

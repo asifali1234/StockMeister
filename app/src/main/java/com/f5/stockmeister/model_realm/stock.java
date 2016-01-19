@@ -58,9 +58,7 @@ public class stock extends RealmObject implements Serializable {
 
 
     private float Open;
-    private float PreviousClose;
-    private float PricePaid;
-    private String ChangeinPercent;
+    private float ChangeinPercent;
 
 
     private float PERatio;
@@ -556,29 +554,29 @@ public class stock extends RealmObject implements Serializable {
         this.PERatio = PERatio;
     }
 
-    public String getChangeinPercent() {
+    public float getChangeinPercent() {
         return ChangeinPercent;
     }
 
-    public void setChangeinPercent(String changeinPercent) {
+    public void setChangeinPercent(float changeinPercent) {
         ChangeinPercent = changeinPercent;
     }
 
-    public float getPricePaid() {
-        return PricePaid;
-    }
-
-    public void setPricePaid(float pricePaid) {
-        PricePaid = pricePaid;
-    }
-
-    public float getPreviousClose() {
-        return PreviousClose;
-    }
-
-    public void setPreviousClose(float previousClose) {
-        PreviousClose = previousClose;
-    }
+//    public float getPricePaid() {
+//        return PricePaid;
+//    }
+//
+//    public void setPricePaid(float pricePaid) {
+//        PricePaid = pricePaid;
+//    }
+//
+//    public float getPreviousClose() {
+//        return PreviousClose;
+//    }
+//
+//    public void setPreviousClose(float previousClose) {
+//        PreviousClose = previousClose;
+//    }
 
     public float getOpen() {
         return Open;
